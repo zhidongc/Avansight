@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avansight", "Avansight\Avansight.csproj", "{4A69FAF3-EC3E-4170-B304-53B2FC156115}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avansight.Domain", "Avansight.Domain\Avansight.Domain.csproj", "{090A5FF5-D5AD-4D5F-BCFB-24561AE9B6FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avansight.WEB", "Avansight.WEB\Avansight.WEB.csproj", "{1A7F99D6-FAFB-4BE0-B19C-476623322A30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A69FAF3-EC3E-4170-B304-53B2FC156115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A69FAF3-EC3E-4170-B304-53B2FC156115}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A69FAF3-EC3E-4170-B304-53B2FC156115}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A69FAF3-EC3E-4170-B304-53B2FC156115}.Release|Any CPU.Build.0 = Release|Any CPU
 		{090A5FF5-D5AD-4D5F-BCFB-24561AE9B6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{090A5FF5-D5AD-4D5F-BCFB-24561AE9B6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090A5FF5-D5AD-4D5F-BCFB-24561AE9B6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090A5FF5-D5AD-4D5F-BCFB-24561AE9B6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7F99D6-FAFB-4BE0-B19C-476623322A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7F99D6-FAFB-4BE0-B19C-476623322A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7F99D6-FAFB-4BE0-B19C-476623322A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7F99D6-FAFB-4BE0-B19C-476623322A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

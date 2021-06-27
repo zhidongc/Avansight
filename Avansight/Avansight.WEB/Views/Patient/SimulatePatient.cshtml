@@ -1,65 +1,30 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<script>
-    $(document).ready(function () {
-
-        // Run this once only in case widget is on page more than once
-        //alert('ready');
-    });
-   $(function () {  
-        $("#generate").click(function () {   
-            var size = $("#size").val();
-            var male = $("#male").val();
-            var female = $("#female").val();
-            var age20 = $("#age20").val();
-            var age30 = $("#age30").val();
-            var age40 = $("#age40").val();
-            var age50 = $("#age50").val()//;
-            var age60 = $("#age60").val();
-            if (parseInt(size) < 10) {
-                alert("Sample Size minimum 10");
-                return;
-            }
-                
-            if (parseInt(male) < 1 || parseInt(female) < 1 || parseInt(age20) < 1 || parseInt(age30) < 1 || parseInt(age40) < 1 || parseInt(age50) < 1 || parseInt(age60) < 1) {
-                alert("minimum of 1 for the weight");
-                return;
-            }
-                
-            var jsondata = { "size": size, "male": male, "female": female, "age20": age20, "age30": age30, "age40": age40, "age50": age50, "age60": age60 };
-        $.ajax({
-                type: "POST",
-                contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                url: "@(Url.Action("JsonGeneratePatients", "Patient"))",
-                data: "data=" + JSON.stringify(jsondata),
-                dataType: "text",
-                success: function (data) {
-                    var res = $.parseJSON(data);
-                    alert(res);
-                }, 
-                error: function (xhr, err) {
-                    alert("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-                    alert("responseText: " + xhr.responseText);
-                } 
-               })  
-            return false;  
-        });  
-    });   
-</script>
+    <script>
+        $(document).ready(function () {
+            var ageChartContainer = document.getElementById("agechart");
+            var genderChartContainer = document.getElementById("genderchart");
+            var visitDataChartContainer = document.getElementById("linechart");
+            domoCharts.init(ageChartContainer, genderChartContainer, visitDataChartContainer);
+        });
+    </script>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <table class="table table-striped">
-            <tr><td colspan="5"> Sample Sizes: <input type="text" id="size" value="500" /></td></tr>
+            <tr><td colspan="5"> Sample Sizes: <input type="text" id="size" value="50" /></td></tr>
             <tr><td colspan="5"> Gender:</td></tr>
             <tr><td colspan="2"> Male(Weight) </td> <td colspan="2">     Female(Weight)</td></tr>
-            <tr><td colspan="2"><input type="text" id="male" value="50" /></td> <td colspan="2"> <input type="text" id="female" value="50"/></td></tr>
+            <tr><td colspan="2"><input type="text" id="male" value="50" /></td> <td colspan="2"> <input type="text" id="female" value="20" /></td></tr>
             <tr><td colspan="5"> Age:</td></tr>
             <tr><td>(21-30)</td><td>(31-40)</td><td>(41-50)</td><td>(51-60)</td><td>(61-70)</td></tr>
-            <tr><td><input type="text" id="age20" value="20" /></td><td><input type="text" id="age30" value="20"/></td><td><input type="text" id="age40" value="20" /></td><td><input type="text" id="age50" value="20"/></td><td><input type="text" id="age60" value="20" /></td></tr>
-            <tr><td><button type="button" id='generate' class="btn btn-primary">Generate Patients</button></td></tr>
+            <tr><td><input type="text" id="age20" value="20" /></td><td><input type="text" id="age30" value="10" /></td><td><input type="text" id="age40" value="20" /></td><td><input type="text" id="age50" value="30" /></td><td><input type="text" id="age60" value="20" /></td></tr>
+            <tr><td colspan="3"><button type="button" id='generate' class="btn btn-primary">Generate Patients</button></td></tr>
+            <tr><td colspan="3"><p id="agechart"></p></td> <td colspan="2"><p id="genderchart"></p></td></tr>
+            <tr><td colspan="3"><button type="button" id='save' class="btn btn-secondary">Save Generated Records</button></td></tr>
         </table>
 
-        <div> <br /></div>
+
+
     </div>
 </div>

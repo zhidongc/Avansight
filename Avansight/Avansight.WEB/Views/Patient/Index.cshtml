@@ -8,31 +8,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/domoPhoenix.js"></script>
+    <script src="~/Scripts/Avansight.js"></script>
 </head>
 <body>
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="#tab1">Sumulate Patient</a>
+            <a class="nav-link"  data-next="#tab1" data-back="#tab2"><button type="button" id='Simulate' class="btn btn-primary">Simulate Patients</button></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#tab2">Visit Data</a>
+            <a class="nav-link" data-next="#tab2" data-back="#tab1"><button type="button" id='Visit' class="btn btn-secondary">Visit Data</button></a>
         </li>
     </ul>
     <div>
-       
+
         <div class="tab-content">
             <div id="tab1" class="tab-pane active">
                 @{
-                Html.RenderPartial("SimulatePatient");
+                    Html.RenderPartial("SimulatePatient");
                 }
             </div>
 
-            <div id="tab2" class="tab-pane active">
+            <div id="tab2" class="tab-pane nav-item">
                 @{
-                Html.RenderPartial("VisitData");
+                    Html.RenderPartial("VisitData");
                 }
 
             </div>

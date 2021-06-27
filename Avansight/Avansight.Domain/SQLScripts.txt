@@ -1,0 +1,90 @@
+﻿CREATE DATABASE [Avansight];
+GO
+USE [Avansight];
+GO
+CREATE TABLE [dbo].[Patient](
+	[PatientId] [int] IDENTITY(1,1) NOT NULL,
+	[Age] [smallint] NULL,
+	[Gender] [nchar](10) NULL,
+ CONSTRAINT [PK_Patient] PRIMARY KEY CLUSTERED 
+(
+	[PatientId] ASC
+))
+GO
+
+CREATE TABLE [dbo].[TreatmentReading](
+	[TreatmentReadingId] [int] IDENTITY(1,1) NOT NULL,
+	[VisitWeek] [nchar](10) NULL,
+	[Reading] [decimal](4, 2) NULL,
+	[PatientId] [int] NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[TreatmentReading]  WITH CHECK ADD FOREIGN KEY([PatientId])
+REFERENCES [dbo].[Patient] ([PatientId])
+GO
+CREATE TYPE [dbo].[PatientTableType] AS TABLE(
+	[PatientId] [int] NULL,
+	[Age] [smallint] NULL,
+	[Gender] [nchar](10) NULL
+)
+GO
+
+/****** Object:  UserDefinedTableType [dbo].[TreatmentReadingTableType]    Script Date: 2021/6/26 19:05:55 ******/
+CREATE TYPE [dbo].[TreatmentReadingTableType] AS TABLE(
+	[TreatmentReadingId] [int] NULL,
+	[VisitWeek] [nchar](10) NULL,
+	[Reading] [decimal](4, 2) NULL,
+	[PatientId] [int] NULL
+)
+GO
+
+CREATE PROCEDURE [dbo].[PatientGet]
+AS
+BEGIN
+	select * from Patient;
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[PatientSet]
+	@Patients AS PatientTableType READONLY
+AS
+BEGIN
+	insert into Patient(age,gender)   select Age,Gender from @Patients;
+	SELECT * from Patient 
+END
+GO
+
+CREATE PROCEDURE [dbo].[TreatmentReadingGet]
+AS
+BEGIN
+	select * from TreatmentReading;
+END
+GO
+CREATE PROCEDURE [dbo].[TreatmentReadingSet]
+	@TreatmentReadings AS TreatmentReadingTableType READONLY
+AS
+BEGIN
+	declare @TreatmentReadingId AS Int;
+	select @TreatmentReadingId = max(TreatmentReadingId) from TreatmentReading;
+	insert into TreatmentReading(visitWeek,Reading,PatientId)   select visitWeek,Reading,PatientId from @TreatmentReadings;
+	SELECT TreatmentReadingId from TreatmentReading where TreatmentReadingId > @TreatmentReadingId;
+END
+GO
+
+
+CREATE TRIGGER  Trigger_Patient_ForInsertmagic  
+
+ON patient  
+
+FOR INSERT  
+
+AS  
+
+begin  
+
+SELECT * FROM INSERTED
+
+end 
+GO

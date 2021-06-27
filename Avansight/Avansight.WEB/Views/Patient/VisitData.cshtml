@@ -4,20 +4,12 @@
 *@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application name1", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home1", "Index", "Home")</li>
-                <li>@Html.ActionLink("About1", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact1", "Contact", "Home")</li>
-            </ul>
-        </div>
+        <table class="table table-striped">
+            <tr><td colspan="3">Visit Data</td></tr>
+            <tr><td colspan="1"><button type="button" id='all' class="btn btn-primary">All Patients</button></td><td colspan="2"><select id="selectPatient">
+    <option>Choose a number</option>
+</select></td></tr>
+            <tr><td colspan="3"><p id="linechart"></p></td></tr>
+        </table>
     </div>
 </div>

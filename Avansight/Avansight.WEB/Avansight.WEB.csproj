@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="Views\Patient\NewFolder\**" />
+    <Content Remove="Views\Patient\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Patient\NewFolder\**" />
+    <None Remove="Views\Patient\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

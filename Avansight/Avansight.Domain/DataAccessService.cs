@@ -55,11 +55,11 @@ namespace Avansight.Domain
                 command.CommandText = "dbo.PatientSet";
                 command.CommandType = CommandType.StoredProcedure;
                 command.Transaction = transaction;
-                var parameter = command.CreateParameter();
-                parameter.TypeName = "dbo.PatientTableType";
-                parameter.Value = table;
-                parameter.ParameterName = "@Patients";
-                command.Parameters.Add(parameter);
+                var parameters = command.CreateParameter();
+                parameters.TypeName = "dbo.PatientTableType";
+                parameters.Value = table;
+                parameters.ParameterName = "@Patients";
+                command.Parameters.Add(parameters);
                 SqlDataReader reader;
                 reader = command.ExecuteReader();
                 patients.Clear();
@@ -139,6 +139,7 @@ namespace Avansight.Domain
 
                 throw ex;
             }
+            conn.Close();
             return 0;
         }
         public List<TreatmentReading> getTreatmentReadings()

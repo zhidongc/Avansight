@@ -12,4 +12,4 @@ git push -u origin main
 
 Please use SQL tools to execute SQLScripts.txt in Avansight.Domain Directory
 
-then open Visual Studio 2017 and enjoy
+Then use Visual Studio 2017 open solution and enjoy
